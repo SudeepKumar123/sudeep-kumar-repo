@@ -1,0 +1,14 @@
+<h1 class='text-decoration-underline text-center m-4'>Login page</h1>
+<form class='container' [formGroup]="loginForm" (ngSubmit)='login()'>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">User Name</label>
+        <input type="text" class="form-control" formControlName="name" aria-describedby="emailHelp">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Password</label>
+        <input type="password" class="form-control" formControlName="password" aria-describedby="emailHelp">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <!-- <button type="submit" class="btn btn-primary" (click)='runSuccess()'>Message</button> -->
+</form>

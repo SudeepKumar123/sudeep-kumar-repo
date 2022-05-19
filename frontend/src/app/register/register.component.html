@@ -1,0 +1,40 @@
+<h1 class='text-decoration-underline text-center m-4'>Register Page</h1>
+<form class='container' [formGroup]="register" (ngSubmit)="collection()">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Name<span style='color:red'>*</span></label>
+    <input type="text" class="form-control" formControlName="name" aria-describedby="emailHelp"
+     [placeholder]='title'>
+
+    <span style='color:red' *ngIf='name && name.invalid && name.value'>This field is not valid</span>
+    <!-- <span style='color:red' *ngIf='name && name.value'>This field is not valid</span> -->
+
+    <!-- <ng-template #elseBlock1>
+      <span style='color:red' *ngIf='name && name.invalid && name.value'>This field is not validiii</span>
+    </ng-template> -->
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address<span style='color:red'>*</span></label>
+    <input type="email" class="form-control" formControlName="email" aria-describedby="emailHelp">
+    <span style='color:red' *ngIf='email && submitted==true && email.invalid else elseBlock2'>This field is required and type valid email.</span>
+
+    <ng-template #elseBlock2>
+      <span style='color:red' *ngIf='email && email.invalid && email.value'>This field is required and type valid email.</span>
+    </ng-template>
+
+    <!-- <span style='color:red' *ngIf='email && email.invalid && email.value'>This field is required and type valid email.</span> -->
+
+    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+  </div>
+  
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Password<span style='color:red'>*</span></label>
+    <input type="password" class="form-control" formControlName="password" aria-describedby="emailHelp">
+    <span style='color:red' *ngIf='password && submitted==true && password.invalid else elseBlock3'>This field is required and minimum length 5 character</span>
+
+    <ng-template #elseBlock3>
+      <span style='color:red' *ngIf='password && password.invalid && password.value'>This field is required and minimum length 5 character</span>
+    </ng-template>
+    <!-- <span style='color:red' *ngIf='password && password.invalid && password.value'>This field is required and minimum length 5 character</span> -->
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

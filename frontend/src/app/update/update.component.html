@@ -1,0 +1,35 @@
+
+
+<div class=" rounded mt-2 container col-12 mt-5 py-3 text-center border border-primary bg-light">
+    <a><img class='rounded-circle' [src]="myimage" width=110px height=110px></a><br>
+    <input class='py-3 btn bt-light' style="padding-left:75px" type="file" (change)='onFileSelected($event)' accept="image/*">
+    <button type="submit" (click)="onUpload()" class="btn btn-primary mb-3">Upload Profile Pic</button>
+</div>
+
+<div class='container mt-5 rounded bg-light'>
+  <form [formGroup]="updateForm" (ngSubmit)='update()'>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">User Name</label>
+      <input type="text" class="form-control" formControlName="name" aria-describedby="emailHelp" placeholder="Name should be unique.">
+      <span style='color:red' *ngIf='name && submitted==true && name.invalid else elseBlock1'>This field is not
+        valid</span>
+
+      <ng-template #elseBlock1>
+        <span style='color:red' *ngIf='name && name.invalid && name.value'>This field is not valid</span>
+      </ng-template>
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email</label>
+      <input type="email" class="form-control" formControlName="email" aria-describedby="emailHelp" placeholder="Email should be unique.">
+      <span style='color:red' *ngIf='email && submitted==true && email.invalid else elseBlock2'>This field is required and type valid email.</span>
+
+    <ng-template #elseBlock2>
+      <span style='color:red' *ngIf='email && email.invalid && email.value'>This field is required and type valid email.</span>
+    </ng-template>
+    </div>
+
+    <button type="submit" class="btn btn-primary mb-3">Update</button>
+    <!-- <button type="submit" class="btn btn-primary" (click)='runSuccess()'>Message</button> -->
+  </form>
+</div>
